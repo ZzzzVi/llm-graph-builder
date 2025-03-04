@@ -9,6 +9,7 @@ import deleteAPI from '../services/DeleteFiles';
 import { postProcessing } from '../services/PostProcessing';
 import { triggerStatusUpdateAPI } from '../services/ServerSideStatusUpdateAPI';
 import useServerSideEvent from '../hooks/useSse';
+import DropZone from './DataSources/Local/DropZoneButton';
 import {
   batchSize,
   buttonCaptions,
@@ -904,17 +905,8 @@ const Content: React.FC<ContentProps> = ({
               </div>
             </Typography>
           </div>
-          <div>
-            <ButtonWithToolTip
-              placement='top'
-              text='上传资源'
-              label='上传资源'
-              className='mr-2!'
-              onClick={toggleEnhancementDialog}
-              size={isTablet ? 'small' : 'medium'}
-            >
-              上传资源
-            </ButtonWithToolTip>
+          <div className="flex-info">
+            <DropZone />
             <ButtonWithToolTip
               placement='top'
               text='图谱增强设置'

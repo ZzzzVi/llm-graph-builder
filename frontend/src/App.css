@@ -400,7 +400,7 @@ opacity: 0.8 !important;
 .sidenav-container{
   height: calc(100vh - 58px);
   min-height: 200px;
-  display: flex
+  display: flex;
 }
 
 .sys-name {
@@ -415,4 +415,54 @@ opacity: 0.8 !important;
   font-size: 14px !important;
   font-weight: 400  !important;
   margin-left: 30px;
+}
+
+.flex-info {
+  display: flex;
+  align-items: center;
+}
+
+.upload-btn .ndl-upload-img-wrapper{
+  display: none !important;
+}
+
+.upload-btn .ndl-progress-bar-wrapper .ndl-header .ndl-heading::after{
+  display: none !important;
+}
+
+.upload-btn .ndl-dnd-title {
+  display: none !important;
+  outline: none !important;
+}
+.upload-btn  {
+  height: 36px !important;
+  width: 116px !important;
+  background-color: #3E81F4 !important;
+  border: 1px solid #3E81F4 !important;
+  color: #fff !important;
+  margin-right: 10px;
+  outline: none !important;
+  position: relative;
+  background-image: none !important;
+}
+.upload-btn .ndl-dnd-browse-link{
+  color: #3E81F4 !important;
+  text-decoration-line: none !important;
+}
+.upload-btn .ndl-dnd-subtitle span {
+ display: none !important;
+}
+.upload-btn .ndl-dropzone-inner-content {
+border: none !important;
+outline: none !important;
+}
+.upload-btn .text {
+  position: absolute;
+  color: #fff !important;
+  top: 8px;
+  font-size: 14px;
+  font-weight: 800;
+  background: #3E81F4 !important;
+  cursor: pointer;
+  pointer-events: none !important;
 }

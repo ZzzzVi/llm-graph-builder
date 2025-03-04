@@ -28,8 +28,5 @@ body {
 }
 
 
-.ndl-progress-bar-wrapper .ndl-header .ndl-heading::after{
-  animation: none !important;
-}
 
 
