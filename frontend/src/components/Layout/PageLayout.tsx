@@ -151,7 +151,7 @@ const PageLayout: React.FC = () => {
         localStorage.setItem('disconnectButtonState', isModalOpen ? 'true' : 'false');
       };
       const credentials: any = {
-        uri: 'neo4j://47.108.209.149:7687',
+        uri: 'neo4j://183.222.164.34:7688',
         userName: 'neo4j',
         password: 'emd4dDEyM0BAQA==',
         database: 'neo4j',

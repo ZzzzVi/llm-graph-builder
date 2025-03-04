@@ -198,7 +198,7 @@ const DropZone: FunctionComponent = () => {
   return (
     <>
       <Dropzone
-        loadingComponent={isLoading && <Loader title='Uploading' />}
+        loadingComponent={isLoading && <Loader title='' />}
         isTesting={true}
         customTitle={'上传资源'}
         className='upload-btn'
