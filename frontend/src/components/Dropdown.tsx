@@ -16,7 +16,7 @@ const DropdownComponent: React.FC<ReusableDropdownProps> = ({
   value,
 }) => {
   const isProdEnv = process.env.VITE_ENV === 'PROD';
-  const isLargeDesktop = useMediaQuery(`(min-width:1440px )`);
+  const isLargeDesktop = useMediaQuery(`(min-width:100px )`);
   const handleChange = (selectedOption: OptionType | null | void) => {
     onSelect(selectedOption);
     const existingModel = localStorage.getItem('selectedModel');
@@ -30,13 +30,13 @@ const DropdownComponent: React.FC<ReusableDropdownProps> = ({
       <div className={view === 'ContentView' ? 'w-[150px]' : ''}>
         <Select
           type='select'
-          label='LLM Models'
+          label='LLM 模型'
           helpText={
             <div className='w-max! flex gap-1 items-center'>
               <span>
                 <InformationCircleIconOutline title='info' aria-label='infoicon' className='n-size-token-6' />
               </span>
-              <span>LLM Model used for Extraction & Chat</span>
+              <span>用于提取和聊天的 LLM 模型</span>
             </div>
           }
           selectProps={{

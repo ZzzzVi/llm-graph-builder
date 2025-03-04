@@ -172,12 +172,12 @@ export const tooltips = {
   visualizeGraph: 'Visualize Graph Schema',
   additionalInstructions: 'Analyze instructions for schema',
 };
-export const PRODMODLES = ['openai_gpt_4o', 'openai_gpt_4o_mini', 'diffbot', 'gemini_1.5_flash'];
+export const PRODMODLES = ['openai_gpt_4o', 'openai_gpt_4o_mini', 'diffbot', 'gemini_1.5_flash', 'ollama_deepseek_r1_70b'];
 export const buttonCaptions = {
   exploreGraphWithBloom: 'Explore Graph',
-  showPreviewGraph: 'Preview Graph',
-  deleteFiles: 'Delete Files',
-  generateGraph: 'Generate Graph',
+  showPreviewGraph: '图谱预览',
+  deleteFiles: '删除文件',
+  generateGraph: '图谱生成',
   dropzoneSpan: 'Documents, Images, Unstructured text',
   youtube: 'Youtube',
   gcs: 'GCS',
@@ -188,7 +188,7 @@ export const buttonCaptions = {
   connect: 'Connect',
   disconnect: 'Disconnect',
   submit: 'Submit',
-  connectToNeo4j: 'Connect to Neo4j',
+  connectToNeo4j: 'Connect',
   cancel: 'Cancel',
   details: 'Details',
   continueSettings: 'Continue',

@@ -14,7 +14,7 @@ const DropdownComponent: React.FC<ReusableDropdownProps> = ({
   value,
 }) => {
   const isProdEnv = process.env.VITE_ENV === 'PROD';
-  const isLargeDesktop = useMediaQuery(`(min-width:1440px )`);
+  const isLargeDesktop = useMediaQuery(`(min-width:100px )`);
   const handleChange = (selectedOption: OptionType | null | void) => {
     onSelect(selectedOption);
     const existingModel = localStorage.getItem('selectedModel');
@@ -28,7 +28,7 @@ const DropdownComponent: React.FC<ReusableDropdownProps> = ({
       <div className={view === 'ContentView' ? 'w-[150px]' : ''}>
         <Select
           type='select'
-          label='LLM Models'
+          label='LLM 模型'
           helpText={<div className='w-max!'> LLM Model used for Extraction & Chat</div>}
           selectProps={{
             onChange: handleChange,

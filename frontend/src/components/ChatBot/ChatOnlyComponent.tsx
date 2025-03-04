@@ -105,7 +105,7 @@ const ChatContent: React.FC<ChatProps> = ({ chatMessages }) => {
           modes: {
             'graph+vector+fulltext': {
               message:
-                'Welcome to the Neo4j Knowledge Graph Chat. You can ask questions related to documents which have been completely processed.',
+                '欢迎来到知识图谱智能回答。您可以询问已处理完成的文档相关问题。',
             },
           },
           user: 'chatbot',

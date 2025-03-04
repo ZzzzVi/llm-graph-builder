@@ -31,7 +31,7 @@ const PageLayout: React.FC = () => {
     vectorIndexMisMatch: false,
     chunksExistsWithDifferentDimension: false,
   });
-  const isLargeDesktop = useMediaQuery(`(min-width:1440px )`);
+  const isLargeDesktop = useMediaQuery(`(min-width:100px )`);
   const {
     connectionStatus,
     setIsReadOnlyUser,
@@ -58,13 +58,6 @@ const PageLayout: React.FC = () => {
   const { user, isAuthenticated } = useAuth0();
 
   const navigate = useNavigate();
-  const toggleLeftDrawer = () => {
-    if (isLargeDesktop) {
-      setIsLeftExpanded(!isLeftExpanded);
-    } else {
-      setIsLeftExpanded(false);
-    }
-  };
   const toggleRightDrawer = () => {
     if (isLargeDesktop) {
       setIsRightExpanded(!isRightExpanded);
@@ -151,7 +144,36 @@ const PageLayout: React.FC = () => {
         }
       }
     }
-    initializeConnection();
+    // 默认配置
+    async function setConect() {
+      const handleDisconnectButtonState = (isModalOpen: boolean) => {
+        setShowDisconnectButton(isModalOpen);
+        localStorage.setItem('disconnectButtonState', isModalOpen ? 'true' : 'false');
+      };
+      const credentials: any = {
+        uri: 'neo4j://47.108.209.149:7687',
+        userName: 'neo4j',
+        password: 'emd4dDEyM0BAQA==',
+        database: 'neo4j',
+        isgdsActive: false,
+        isReadOnlyUser: false,
+        isGCSActive: false,
+        chunksTobeProcess: null,
+        email: '',
+        connection: 'connectAPI',
+      };
+      setUserCredentials({ ...credentials, password: atob(credentials.password) });
+      createDefaultFormData({ ...credentials, password: atob(credentials.password) });
+      setIsGCSActive(credentials.isGCSActive);
+      setGdsActive(credentials.isgdsActive);
+      setConnectionStatus(Boolean(credentials.connection === 'connectAPI'));
+      setIsReadOnlyUser(credentials.isReadonlyUser);
+      handleDisconnectButtonState(true);
+      // handleDisconnectButtonState(true);
+      // localStorage.setItem('neo4j.connection',)
+    }
+    setConect();
+    // initializeConnection()
   }, [isAuthenticated]);
 
   const deleteOnClick = async () => {
@@ -169,8 +191,7 @@ const PageLayout: React.FC = () => {
             id: 2,
             modes: {
               'graph+vector+fulltext': {
-                message:
-                  ' Welcome to the Neo4j Knowledge Graph Chat. You can ask questions related to documents which have been completely processed.',
+                message: '欢迎来到知识图谱问答。您可以询问已处理完成的文档相关问题。',
               },
             },
             user: 'chatbot',
@@ -217,15 +238,17 @@ const PageLayout: React.FC = () => {
             !isRightExpanded ? 'drawerchatbotclosed' : ''
           } ${!isRightExpanded && !isLeftExpanded ? 'drawerclosed' : ''}`}
         >
-          <SideNav
+          {/* <SideNav
             toggles3Modal={toggleS3Modal}
             toggleGCSModal={toggleGCSModal}
             toggleGenericModal={toggleGenericModal}
             isExpanded={isLeftExpanded}
             position='left'
             toggleDrawer={toggleLeftDrawer}
-          />
-          {isLeftExpanded && (
+          /> */}
+          {/* <div></div>
+          <div></div> */}
+          {/* {isLeftExpanded && (
             <DrawerDropzone
               shows3Modal={shows3Modal}
               showGCSModal={showGCSModal}
@@ -235,7 +258,7 @@ const PageLayout: React.FC = () => {
               toggleS3Modal={toggleS3Modal}
               isExpanded={isLeftExpanded}
             />
-          )}
+          )} */}
           <Content
             openChatBot={() => setShowChatBot(true)}
             showChatBot={showChatBot}
@@ -290,14 +313,14 @@ const PageLayout: React.FC = () => {
             />
           </Suspense>
           <div className='layout-wrapper drawerclosed'>
-            <SideNav
+            {/* <SideNav
               toggles3Modal={toggleS3Modal}
               toggleGCSModal={toggleGCSModal}
               toggleGenericModal={toggleGenericModal}
               isExpanded={isLeftExpanded}
               position='left'
               toggleDrawer={toggleLeftDrawer}
-            />
+            /> */}
 
             <Content
               openChatBot={() => setShowChatBot(true)}

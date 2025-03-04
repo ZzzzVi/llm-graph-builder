@@ -22,9 +22,14 @@
 
 body {
   margin: 0;
+  font-family: SourceHanSansCN, SourceHanSansCN;
+  border-radius: 12px;
+
 }
 
 
 .ndl-progress-bar-wrapper .ndl-header .ndl-heading::after{
   animation: none !important;
 }
+
+

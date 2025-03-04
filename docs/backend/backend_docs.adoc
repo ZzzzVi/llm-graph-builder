@@ -3,7 +3,7 @@
 == API Reference
 
 
-=== Connect to Neo4j Graph Database
+=== Connect Graph Database
 -----
 POST /connect
 -----
@@ -1072,7 +1072,7 @@ The API responsible for create the connection obj from Neo4j DB based on environ
 ....
 {
   "status": "Failed",
-  "error": "Could not connect to Neo4j database. Please ensure that the username and password are correct",
+  "error": "Could not Connect database. Please ensure that the username and password are correct",
   "message": "Unable to connect backend DB"
 }
 ....

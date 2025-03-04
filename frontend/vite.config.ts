@@ -11,5 +11,9 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [react()],
     optimizeDeps: { esbuildOptions: { target: 'es2020' } },
+    server: {
+      host:"0.0.0.0",
+      port:8001,
+    },
   };
 });

@@ -24,7 +24,7 @@ const DrawerDropzone: React.FC<DrawerProps> = ({
 }) => {
   const { closeAlert, alertState } = useAlertContext();
   const { isReadOnlyUser, isBackendConnected, connectionStatus } = useCredentials();
-  const isLargeDesktop = useMediaQuery('(min-width:1440px)');
+  const isLargeDesktop = useMediaQuery('(min-width:100px)');
   const isYoutubeOnly = useMemo(
     () => APP_SOURCES.includes('youtube') && !APP_SOURCES.includes('wiki') && !APP_SOURCES.includes('web'),
     []
@@ -115,13 +115,15 @@ const DrawerDropzone: React.FC<DrawerProps> = ({
               </Typography>
             </Drawer.Body>
           )
-        ) : (
+        ) 
+        : (
           <Drawer.Body className='overflow-hidden! w-[294px]!'>
             <Typography variant='subheading-medium'>
               You are not logged in. Please Connect to a database to access the content.
             </Typography>
           </Drawer.Body>
-        )}
+        )
+        }
       </Drawer>
     </div>
   );

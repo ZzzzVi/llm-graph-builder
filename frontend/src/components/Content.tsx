@@ -581,7 +581,7 @@ const Content: React.FC<ContentProps> = ({
         modes: {
           'graph+vector+fulltext': {
             message:
-              ' Welcome to the Neo4j Knowledge Graph Chat. You can ask questions related to documents which have been completely processed.',
+              '欢迎来到知识图谱智能问答。您可以询问已处理完成的文档相关问题。',
           },
         },
         user: 'chatbot',
@@ -879,26 +879,26 @@ const Content: React.FC<ContentProps> = ({
       />
       <div className={`n-bg-palette-neutral-bg-default main-content-wrapper`}>
         <Flex
-          className='w-full absolute top-0'
+          className='w-full absolute'
           alignItems='center'
           justifyContent='space-between'
           flexDirection='row'
           flexWrap='wrap'
         >
           <div className='connectionstatus__container'>
-            <span className='h6 px-1'>Neo4j connection {isReadOnlyUser ? '(Read only Mode)' : ''}</span>
+            {/* <span className='h6 px-1'>Neo4j connection {isReadOnlyUser ? '(Read only Mode)' : ''}</span> */}
             <Typography variant='body-medium'>
-              <DatabaseStatusIcon isConnected={connectionStatus} isGdsActive={isGdsActive} uri={userCredentials?.uri} />
+              {/* <DatabaseStatusIcon isConnected={connectionStatus} isGdsActive={isGdsActive} uri={userCredentials?.uri} /> */}
               <div className='pt-1 flex gap-1 items-center'>
                 <div>{!hasSelections ? <StatusIndicator type='danger' /> : <StatusIndicator type='success' />}</div>
                 <div>
                   {hasSelections ? (
                     <span className='n-body-small'>
-                      {hasSelections} Graph Schema configured
+                      {hasSelections} 置图形模式已配置
                       {hasSelections ? `(${selectedNodes.length} Labels + ${selectedRels.length} Rel Types)` : ''}
                     </span>
                   ) : (
-                    <span className='n-body-small'>No Graph Schema configured</span>
+                    <span className='n-body-small'>未配置图形模式</span>
                   )}
                 </div>
               </div>
@@ -907,16 +907,26 @@ const Content: React.FC<ContentProps> = ({
           <div>
             <ButtonWithToolTip
               placement='top'
-              text='Enhance graph quality'
-              label='Graph Enhancemnet Settings'
+              text='上传资源'
+              label='上传资源'
+              className='mr-2!'
+              onClick={toggleEnhancementDialog}
+              size={isTablet ? 'small' : 'medium'}
+            >
+              上传资源
+            </ButtonWithToolTip>
+            <ButtonWithToolTip
+              placement='top'
+              text='图谱增强设置'
+              label='图谱增强设置'
               className='mr-2!'
               onClick={toggleEnhancementDialog}
               disabled={!connectionStatus || isReadOnlyUser}
               size={isTablet ? 'small' : 'medium'}
             >
-              Graph Enhancement
+              图谱增强设置
             </ButtonWithToolTip>
-            {!connectionStatus ? (
+            {/* {!connectionStatus ? (
               <Button
                 size={isTablet ? 'small' : 'medium'}
                 className='mr-2!'
@@ -930,7 +940,7 @@ const Content: React.FC<ContentProps> = ({
                   {buttonCaptions.disconnect}
                 </Button>
               )
-            )}
+            )} */}
           </div>
         </Flex>
 
@@ -1010,7 +1020,7 @@ const Content: React.FC<ContentProps> = ({
             >
               <Hierarchy1Icon />
             </ButtonWithToolTip>
-            <ButtonWithToolTip
+            {/* <ButtonWithToolTip
               text={tooltips.bloomGraph}
               placement='top'
               onClick={handleOpenGraphClick}
@@ -1020,7 +1030,7 @@ const Content: React.FC<ContentProps> = ({
               size={isTablet ? 'small' : 'medium'}
             >
               {buttonCaptions.exploreGraphWithBloom}
-            </ButtonWithToolTip>
+            </ButtonWithToolTip> */}
             <ButtonWithToolTip
               text={
                 !selectedfileslength ? tooltips.deleteFile : `${selectedfileslength} ${tooltips.deleteSelectedFiles}`

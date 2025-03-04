@@ -88,7 +88,7 @@ const FileTable: ForwardRefRenderFunction<ChildRef, FileTableProps> = (props, re
   const [_, copy] = useCopyToClipboard();
   const { colorMode } = useContext(ThemeWrapperContext);
   const [copyRow, setCopyRow] = useState<boolean>(false);
-  const islargeDesktop = useMediaQuery(`(min-width:1440px )`);
+  const islargeDesktop = useMediaQuery(`(min-width:100px )`);
   const { pathname } = useLocation();
   const tableRef = useRef(null);
 
@@ -168,7 +168,7 @@ const FileTable: ForwardRefRenderFunction<ChildRef, FileTableProps> = (props, re
             </div>
           );
         },
-        header: () => <span>Name</span>,
+        header: () => <span>名称</span>,
         footer: (info) => info.column.id,
       }),
       columnHelper.accessor((row) => row.status, {
@@ -276,7 +276,7 @@ const FileTable: ForwardRefRenderFunction<ChildRef, FileTableProps> = (props, re
             </div>
           );
         },
-        header: () => <span>Status</span>,
+        header: () => <span>处理状态</span>,
         footer: (info) => info.column.id,
         filterFn: 'statusFilter' as any,
         size: 250,
@@ -369,13 +369,13 @@ const FileTable: ForwardRefRenderFunction<ChildRef, FileTableProps> = (props, re
             </div>
           );
         },
-        header: () => <span>Upload Status</span>,
+        header: () => <span>上传状态</span>,
         footer: (info) => info.column.id,
       }),
       columnHelper.accessor((row) => row.size, {
         id: 'fileSize',
         cell: (info: CellContext<CustomFile, string>) => <i>{(parseInt(info?.getValue()) / 1000)?.toFixed(2)}</i>,
-        header: () => <span>Size (KB)</span>,
+        header: () => <span>大小(KB)</span>,
         footer: (info) => info.column.id,
       }),
       columnHelper.accessor((row) => row, {
@@ -402,7 +402,7 @@ const FileTable: ForwardRefRenderFunction<ChildRef, FileTableProps> = (props, re
             </div>
           );
         },
-        header: () => <span>Source</span>,
+        header: () => <span>资源</span>,
         footer: (info) => info.column.id,
         filterFn: 'fileSourceFilter' as any,
         meta: {
@@ -447,7 +447,7 @@ const FileTable: ForwardRefRenderFunction<ChildRef, FileTableProps> = (props, re
             </div>
           );
         },
-        header: () => <span>Type</span>,
+        header: () => <span>类型</span>,
         footer: (info) => info.column.id,
         filterFn: 'fileTypeFilter' as any,
         meta: {
@@ -487,7 +487,7 @@ const FileTable: ForwardRefRenderFunction<ChildRef, FileTableProps> = (props, re
           const model = info.getValue();
           return <i>{capitalizeWithUnderscore(model)}</i>;
         },
-        header: () => <span>Model</span>,
+        header: () => <span>模型</span>,
         footer: (info) => info.column.id,
         filterFn: 'llmTypeFilter' as any,
         meta: {
@@ -542,7 +542,7 @@ const FileTable: ForwardRefRenderFunction<ChildRef, FileTableProps> = (props, re
             </Flex>
           );
         },
-        header: () => <span>Nodes</span>,
+        header: () => <span>知识点</span>,
         footer: (info) => info.column.id,
       }),
       columnHelper.accessor((row) => row.relationshipsCount, {
@@ -564,7 +564,7 @@ const FileTable: ForwardRefRenderFunction<ChildRef, FileTableProps> = (props, re
             </Flex>
           );
         },
-        header: () => <span>Relations</span>,
+        header: () => <span>知识点关系</span>,
         footer: (info) => info.column.id,
       }),
       columnHelper.accessor((row) => row.status, {
@@ -573,9 +573,9 @@ const FileTable: ForwardRefRenderFunction<ChildRef, FileTableProps> = (props, re
           <>
             <IconButtonWithToolTip
               placement='right'
-              text='Graph'
+              text='图谱'
               size='large'
-              label='Graph view'
+              label='图谱预览'
               disabled={info.getValue() === 'New' || info.getValue() === 'Uploading'}
               clean
               onClick={() => onInspect(info?.row?.original?.name as string)}
@@ -584,9 +584,9 @@ const FileTable: ForwardRefRenderFunction<ChildRef, FileTableProps> = (props, re
             </IconButtonWithToolTip>
             <IconButtonWithToolTip
               placement='left'
-              text='copy'
+              text='复制'
               size='large'
-              label='Copy Row'
+              label='复制'
               disabled={info.getValue() === 'Uploading'}
               clean
               onClick={() => {
@@ -614,7 +614,7 @@ const FileTable: ForwardRefRenderFunction<ChildRef, FileTableProps> = (props, re
         ),
         maxSize: 300,
         minSize: 180,
-        header: () => <span>Actions</span>,
+        header: () => <span>操作</span>,
         footer: (info) => info.column.id,
       }),
     ],
@@ -807,7 +807,7 @@ const FileTable: ForwardRefRenderFunction<ChildRef, FileTableProps> = (props, re
         if (processingFilesCount === 1) {
           setProcessedCount(1);
         }
-        showNormalToast(`Files are in processing please wait till previous batch completes`);
+        showNormalToast(`文件正在处理中，请等到上一批完成`);
       } else {
         const waitingQueue: CustomFile[] = JSON.parse(
           localStorage.getItem('waitingQueue') ?? JSON.stringify({ queue: [] })
@@ -1005,7 +1005,7 @@ const FileTable: ForwardRefRenderFunction<ChildRef, FileTableProps> = (props, re
             }}
             isLoading={isLoading}
             rootProps={{
-              className: `absolute h-[67%] left-10 filetable ${!islargeDesktop ? 'top-[17%]' : 'top-[14%]'}`,
+              className: `absolute h-[67%] left-3 filetable ${!islargeDesktop ? 'top-[17%]' : 'top-[14%]'}`,
             }}
             components={{
               Body: () => (
@@ -1023,7 +1023,7 @@ const FileTable: ForwardRefRenderFunction<ChildRef, FileTableProps> = (props, re
                         <span>
                           <InformationCircleIconOutline className='n-size-token-6' />
                         </span>
-                        {`Large files may be partially processed up to 10K characters due to resource limit.`}
+                        {`由于资源限制，大文件可能会被部分处理至多 10K 个字符。`}
                         <span></span>
                       </Flex>
                     </DataGridComponents.TableResults>
