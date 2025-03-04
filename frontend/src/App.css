@@ -444,6 +444,7 @@ opacity: 0.8 !important;
   outline: none !important;
   position: relative;
   background-image: none !important;
+  border-radius: 4px !important;
 }
 .upload-btn .ndl-dnd-browse-link{
   color: #3E81F4 !important;
