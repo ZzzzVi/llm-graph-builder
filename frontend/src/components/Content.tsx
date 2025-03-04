@@ -581,7 +581,7 @@ const Content: React.FC<ContentProps> = ({
         modes: {
           'graph+vector+fulltext': {
             message:
-              '欢迎来到知识图谱智能问答。您可以询问已处理完成的文档相关问题。',
+              '欢迎来到专业教学知识助手智能问答。您可以询问已处理完成的文档相关问题。',
           },
         },
         user: 'chatbot',

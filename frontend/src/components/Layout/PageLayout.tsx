@@ -191,7 +191,7 @@ const PageLayout: React.FC = () => {
             id: 2,
             modes: {
               'graph+vector+fulltext': {
-                message: '欢迎来到知识图谱问答。您可以询问已处理完成的文档相关问题。',
+                message: '欢迎来到专业教学知识助手问答。您可以询问已处理完成的文档相关问题。',
               },
             },
             user: 'chatbot',

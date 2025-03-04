@@ -34,8 +34,8 @@ const Header: React.FC<HeaderProp> = () => {
         >
             <section className='items-center justify-between flex-row  flex w-full'>
               <div className="sys-name w-full">
-                <span>知识图谱智能体</span>
-                <span className='info'>构建知识点网络，支撑精准教学与个性学习</span>
+                <span>专业教学知识助手</span>
+                <span className='info'>构建学科知识体系、实现知识关联可视化与智能问答</span>
               </div>
               <div>
                   <IconButtonWithToolTip
